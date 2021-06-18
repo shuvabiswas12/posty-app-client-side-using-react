@@ -1,0 +1,29 @@
+footer {
+    min-height: 100px;
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #FFA000;
+
+}
+
+
+footer ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+footer ul li {
+    list-style-type: none;
+    color: cornflowerblue;
+}
+
+footer ul li:nth-last-child(2)::before, footer ul li:nth-last-child(2)::after {
+    content: "|";
+    margin: 5px 10px;
+    color: #0b4e58;
+}

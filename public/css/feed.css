@@ -1,0 +1,19 @@
+
+.feed .btn-warning {
+    border-radius: 3px;
+}
+.feed .btn-sm {
+    border-radius: 2px;
+    border: none;
+    background-color: #607D8B;
+    color: #F5F5F5;
+}
+.feed .btn-sm:hover {
+    background-color: #FFC107;
+    transition: .2s;
+}
+.feed .post-body {
+    color: #757575!important;
+    font-size: 1.2rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}

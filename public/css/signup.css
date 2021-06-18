@@ -1,0 +1,25 @@
+.box {
+    border: 1px solid #FFA000;
+    background-color: #F5F5F5;
+    box-shadow: 2px 2px 5px 2px rgba(117,117,117,0.92);
+    -webkit-box-shadow: 2px 2px 5px 2px rgba(117,117,117,0.92);
+    -moz-box-shadow: 2px 2px 5px 2px rgba(117,117,117,0.92);
+}
+.signup-btn {
+    width: 50%;
+    border-radius: 0;
+    display: block;
+    margin: 0 auto;
+}
+.signup-bar {
+    background-color: #FFC107;
+}
+.signup-form-container {
+    padding: 0;
+}
+.form-label {
+    margin-bottom: .3rem;
+}
+.items-vertically-center {
+    margin-top: 5%;
+}
