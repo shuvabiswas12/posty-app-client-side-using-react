@@ -24,7 +24,7 @@ function Signup() {
     setSuccessMessage()
 
     try {
-      const response = await fetch("/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -36,7 +36,7 @@ function Signup() {
 
       console.log(data)
 
-      if (response.status == 400) {
+      if (response.status === 400) {
         setErrors(data)
         const error = new Error(response.data)
         throw error

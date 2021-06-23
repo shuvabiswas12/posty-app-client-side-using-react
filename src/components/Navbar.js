@@ -1,29 +1,30 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import StateContext from "../StateContext"
+import DispatchContext from "../DispatchContext"
 
 function Navbar() {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [errors, setErrors] = useState({})
+  const appState = useContext(StateContext)
+  const appDispatch = useContext(DispatchContext)
 
-  async function handleLogin(e) {
-    e.preventDefault()
-    setErrors({})
-    const response = await fetch("/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-    const data = await response.json()
-    console.log(data)
+  async function handleLogout() {
+    try {
+      const response = await fetch("http://localhost:3000/logout", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: appState.user.token,
+        },
+      })
 
-    if (response.status == 400) {
-      setErrors(data)
-      const error = new Error(response.data)
-      throw error
+      const data = await response.json()
+
+      // it works if token is expired or not...
+      console.log(data)
+      appDispatch({ type: "logout", value: "" })
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -41,31 +42,15 @@ function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/profile" className="nav-link fw-bold">
-                  Profile
+                  {appState.user.username}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="" className="nav-link fw-bold">
+                <button className="nav-link fw-bold btn" onClick={handleLogout} style={{ border: "0" }}>
                   Logout
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/register" className="nav-link fw-bold">
-                  Register
-                </Link>
+                </button>
               </li>
             </ul>
-            <form className="d-flex" onSubmit={handleLogin}>
-              <div>
-                <input onChange={(e) => setEmail(e.target.value)} className="form-control me-2" type="email" placeholder="Email" required />
-              </div>
-              <div>
-                <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control me-2" placeholder="Password" required />
-              </div>
-              <button className="btn btn-success" type="submit">
-                Login
-              </button>
-            </form>
           </div>
         </div>
       </nav>
